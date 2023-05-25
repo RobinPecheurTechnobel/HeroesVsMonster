@@ -40,7 +40,9 @@ namespace HeroesVsMonster.Models
             }
             EnnemiVisible = EnnemiAffiché;
 		}
-
+        /// <summary>
+        /// Méthode d'affichage du plateau
+        /// </summary>
 		public void AfficherPlateau()
 		{
 			Console.Clear();
@@ -147,14 +149,24 @@ namespace HeroesVsMonster.Models
             Console.Write(valeurParDefaut);
             Console.ResetColor();
         }
-        
+        /// <summary>
+        /// Ajoute un personnage en proposant une position
+        /// Si la position n'est pas juste, elle sera corrigé
+        /// </summary>
+        /// <param name="personnageAAjouté">Personnage qui sera ajouté</param>
+        /// <param name="ligne">ligne de la position proposée</param>
+        /// <param name="colonne">Colonne de la position proposée</param>
         public void AjouterPersonnage(Personnage personnageAAjouté, int ligne, int colonne)
         {
             personnageAAjouté.Y = ligne;
             personnageAAjouté.X = colonne;
             this.AjouterPersonnage(personnageAAjouté);
         }
-
+        /// <summary>
+        /// Ajoute un personnage en se basant sur les valeurs x et y du personnage
+        /// Si la position n'est pas juste, elle sera corrigé
+        /// </summary>
+        /// <param name="personnageAAjouté">Personnage qui sera ajouté</param>
         public void AjouterPersonnage(Personnage personnageAAjouté)
 		{
             int y , x;
@@ -292,7 +304,10 @@ namespace HeroesVsMonster.Models
             }
         }
 
-        //TODO déclencher combat
+        /// <summary>
+        /// Méthode qui dit s'il y a une rencontre
+        /// </summary>
+        /// <returns>tue = les conditions pour un combat sont remplies</returns>
         public bool EnCombat()
         {
             int x = _Joueur.X, y = _Joueur.Y;
@@ -305,6 +320,9 @@ namespace HeroesVsMonster.Models
             }
             return false;
         }
+        /// <summary>
+        /// Le combat
+        /// </summary>
         public void Batail()
         {
             Monstre? Challenger = null;

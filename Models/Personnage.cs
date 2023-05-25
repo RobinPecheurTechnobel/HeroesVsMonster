@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeroesVsMonster.Models.Heros;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,7 +105,18 @@ namespace HeroesVsMonster.Models
 			degat += Dés.LancerDé4();
 			degat += this.ModFor;
 
-			Cible.RecevoirDegat(degat);
+            string message =this.GetType().Name+$" frappe et inflige {degat} à ";
+			if (Cible is Hero)
+				message += ((Hero)Cible).Name;
+			else message += Cible.GetType().Name;
+			Console.WriteLine(message);
+
+            if(Cible.RecevoirDegat(degat))
+			{
+                if (Cible is Hero)
+					Console.WriteLine(((Hero)Cible).Name+" s'éffondre");
+                else Console.WriteLine(Cible.GetType().Name + " s'éffondre");
+            }
 
         }
 		/// <summary>

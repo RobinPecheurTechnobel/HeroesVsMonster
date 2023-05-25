@@ -33,7 +33,7 @@ namespace HeroesVsMonster.Models.Heros
             get { return getModificateur(For); }
         }
 
-        public Nain() : base()
+        public Nain(string Name) : base(Name)
         {
             Pv = _Endurance + ModEnd;
         }

@@ -34,7 +34,7 @@ namespace HeroesVsMonster
                 Console.WriteLine(objet);
             /**/
             
-            Hero monHero = new Humain();
+            Hero monHero = new Humain("Conan");
 
 
             Plateau monPlateau = new Plateau(true);
@@ -47,15 +47,20 @@ namespace HeroesVsMonster
             do
             {
                 monPlateau.AfficherPlateau();
-                if(!monPlateau.EnCombat())
+                Console.WriteLine($"Il reste {monPlateau.EnnemisCount()} monstre(s) sur la map");
+                Console.WriteLine();
+                if (!monPlateau.EnCombat())
                     monPlateau.InputJoueur();
                 else 
                 {
                     monPlateau.Batail();
                     Console.ReadLine();
                 }
-            } while (monHero.EstVivant() || monPlateau.EnnemisCount() > 0);
-
+            } while (monHero.EstVivant() && monPlateau.EnnemisCount() > 0);
+            if (monHero.EstVivant())
+                Console.WriteLine("Bien joué!");
+            else
+                Console.WriteLine("Game Over");
 
 
 

@@ -33,7 +33,7 @@ namespace HeroesVsMonster.Models.Heros
             get { return getModificateur(For); }
         }
 
-        public Humain() : base()
+        public Humain(string Name) : base(Name)
         {
             Pv = End + ModEnd;
         }
